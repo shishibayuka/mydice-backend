@@ -1,0 +1,6 @@
+13306:dev-shokuryu.cluster-czkqgymth87g.ap-northeast-1.rds.amazonaws.com:3306
+23306:dev-shokuryu-rds-for-mysql.czkqgymth87g.ap-northeast-1.rds.amazonaws.com:3306
+33306:stg-shokuryu.cluster-c2gwvei2wzfb.ap-northeast-1.rds.amazonaws.com:3306
+43306:stg-shokuryu-rds-for-mysql.c2gwvei2wzfb.ap-northeast-1.rds.amazonaws.com:3306
+53306:prod-shokuryu.cluster-cj8lajjjyuwo.ap-northeast-1.rds.amazonaws.com:3306
+63306:prod-shokuryu-rds-for-mysql.cj8lajjjyuwo.ap-northeast-1.rds.amazonaws.com:3306

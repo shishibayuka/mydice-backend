@@ -1,0 +1,6 @@
+!.gitkeep
+/db/*
+!/db/mysqld.cnf
+/.vscode
+.DS_Store
+.editorconfig

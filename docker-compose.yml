@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  mysql:
+    platform: linux/x86_64
+    container_name: dice-db
+
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: dice
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+    ports:
+      - 3316:3306
+    volumes:
+      - ./docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./db:/var/lib/mysql
+      - ./db_assets:/var/lib/mysql-files
+  php:
+    container_name: dice-backend-php
+
+    build:
+      context: ./
+      dockerfile: ./docker/php/Dockerfile
+      target: local
+    volumes:
+      - ./src:/var/www
+    privileged: true
+  nginx:
+    image: nginx:1.19.2-alpine
+    container_name: dice-backend-nginx
+
+    ports:
+      - 8100:80
+    volumes:
+      - ./src:/var/www
+      - ./docker/nginx/local.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+  elasticmq:
+    image: softwaremill/elasticmq
+    container_name: dice-backend-elasticmq
+    volumes:
+      # ElasticMQの設定ファイル
+      - ./docker/elasticmq/conf/custom.conf://opt/elasticmq.conf:ro
+
+    depends_on:
+      - php
+
+networks:
+  common_network:
+    external: true
