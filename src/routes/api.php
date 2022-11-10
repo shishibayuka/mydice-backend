@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/authenticate', [AuthController::class, 'authenticate']);
+// Route::post('/user', [AuthController::class, 'user']);
+
+Route::post('/user', [UserController::class, 'create']);
+// Route::post('user', 'UserController@create');
+
+Route::post('/display', [TestController::class, 'display']);
 
 // / 疎通確認
 Route::get('/ping', function () {
