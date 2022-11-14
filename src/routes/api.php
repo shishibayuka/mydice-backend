@@ -32,6 +32,7 @@ Route::post('/user', [UserController::class, 'create']);
 
 // courseに関する処理
 Route::get('/course', [CourseController::class, 'index']);
+Route::get('/post_courses', [CourseController::class, 'getCoursesByUserId']);
 Route::post('/course', [CourseController::class, 'create']);
 
 

@@ -61,4 +61,13 @@ class CourseController extends Controller
 
         return response()->json($courses, Response::HTTP_OK);
     }
+
+    // ログインしているユーザーが投稿したコースのデータを取得する
+    public function getCoursesByUserId()
+    {
+        // Todo: user_idをログイン者のidとする
+        $courses = Course::where('user_id', '1')->get();
+
+        return response()->json($courses, Response::HTTP_OK);
+    }
 }
