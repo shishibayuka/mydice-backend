@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TestController;
+use App\Http\Controllers\Api\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::post('/authenticate', [AuthController::class, 'authenticate']);
 
 Route::post('/user', [UserController::class, 'create']);
 // Route::post('user', 'UserController@create');
+
+Route::post('/course', [CourseController::class, 'create']);
 
 Route::post('/display', [TestController::class, 'display']);
 

@@ -22,9 +22,11 @@ class UserController extends Controller
             'password' => ['required', 'string', 'max:255', 'confirmed'],
         ]);
 
+        // 検証失敗時の処理
         if ($validator->fails()) {
             return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

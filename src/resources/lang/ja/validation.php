@@ -158,6 +158,8 @@ return [
         'email' => 'メールアドレス',
         'name' => '名前',
         'password' => 'パスワード',
+        'grid' => 'マス数',
+        'description' => '説明',
     ],
 
 ];

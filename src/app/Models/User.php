@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // 主テーブル(users)から従テーブル(courses)の情報を複数引き出す
+    // 「１対多」の「多」側 → メソッド名は複数形
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }
