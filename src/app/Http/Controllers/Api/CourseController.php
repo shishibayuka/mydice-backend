@@ -53,4 +53,12 @@ class CourseController extends Controller
 
         return response()->json($course, Response::HTTP_OK);
     }
+
+    // 一覧はindex
+    public function index()
+    {
+        $courses = Course::all();
+
+        return response()->json($courses, Response::HTTP_OK);
+    }
 }

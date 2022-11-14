@@ -29,9 +29,15 @@ Route::post('/authenticate', [AuthController::class, 'authenticate']);
 Route::post('/user', [UserController::class, 'create']);
 // Route::post('user', 'UserController@create');
 
+
+// courseに関する処理
+Route::get('/course', [CourseController::class, 'index']);
 Route::post('/course', [CourseController::class, 'create']);
 
+
+// 練習用
 Route::post('/display', [TestController::class, 'display']);
+
 
 // / 疎通確認
 Route::get('/ping', function () {
