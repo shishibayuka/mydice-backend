@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TestController;
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\API\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ use App\Http\Controllers\Api\CourseController;
 |
 */
 
+// sanctumの保護を受けたルート設定
+// api/userにAPIトークンを含めないリクエストを投げるとエラーになる
+// APIトークンを含めるとuserのデータを返す
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -34,6 +38,11 @@ Route::post('/user', [UserController::class, 'create']);
 Route::get('/course', [CourseController::class, 'index']);
 Route::get('/post_courses', [CourseController::class, 'getCoursesByUserId']);
 Route::post('/course', [CourseController::class, 'create']);
+
+
+// eventに関する処理（練習用）
+Route::get('/event', [EventController::class, 'index']);
+Route::post('/event', [EventController::class, 'create']);
 
 
 // 練習用
