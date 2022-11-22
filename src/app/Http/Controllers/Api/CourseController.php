@@ -46,7 +46,9 @@ class CourseController extends Controller
 
             // トランザクションをコミット（処理の完了）
             DB::commit();
-            return response()->json($course, Response::HTTP_OK);
+
+            // 201 Created は新規登録で使う
+            return response()->json($course, Response::HTTP_CREATED);
         } catch (Exception $exception) {
             // トランザクションをロールバック（異常発生時に途中で処理を終了）
             DB::rollBack();
@@ -65,6 +67,26 @@ class CourseController extends Controller
         // $course = Course::find($id);
         // $events = $course->events;
         // return response()->json(['course' => $course, 'event' => $events], Response::HTTP_OK);
+    }
+
+    // コースとイベントの削除
+    public function delete(Int $id)
+    {
+        // コースを取得する
+        $course = Course::find($id);
+
+        // コースが存在していたら削除処理をする
+        if ($course) {
+            // マイグレーションファイルに子テーブルを自動で削除
+            // ->onDelete('cascade'); の設定をしているのでコースを削除するとそれに紐づくイベントも削除される
+            // $courseWithEventsDelete = Course::find($id)->delete();
+            $course->delete();
+
+            return response()->json(["message" => "コースを削除しました"],  Response::HTTP_OK);
+        } else {
+            // コースが存在していなかったらエラーメッセージを送る
+            return response()->json(["message" => "コースが見つかりませんでした"], Response::HTTP_NOT_FOUND);
+        }
     }
 
     // 一覧はindex

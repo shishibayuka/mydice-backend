@@ -38,7 +38,10 @@ Route::post('/user', [UserController::class, 'create']);
 Route::get('/course', [CourseController::class, 'index']);
 Route::get('/post_courses', [CourseController::class, 'getCoursesByUserId']);
 Route::post('/course', [CourseController::class, 'create']);
+// コースとイベントの表示
 Route::get('/course/{id}', [CourseController::class, 'show']);
+// コースとイベントの削除
+Route::delete('/course/{id}', [CourseController::class, 'delete']);
 
 
 // // eventに関する処理（練習用）
