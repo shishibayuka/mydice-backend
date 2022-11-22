@@ -38,15 +38,16 @@ Route::post('/user', [UserController::class, 'create']);
 Route::get('/course', [CourseController::class, 'index']);
 Route::get('/post_courses', [CourseController::class, 'getCoursesByUserId']);
 Route::post('/course', [CourseController::class, 'create']);
+Route::get('/course/{id}', [CourseController::class, 'show']);
 
 
-// eventに関する処理（練習用）
-Route::get('/event', [EventController::class, 'index']);
-Route::post('/event', [EventController::class, 'create']);
+// // eventに関する処理（練習用）
+// Route::get('/event', [EventController::class, 'index']);
+// Route::post('/event', [EventController::class, 'create']);
 
 
-// 練習用
-Route::post('/display', [TestController::class, 'display']);
+// // 練習用
+// Route::post('/display', [TestController::class, 'display']);
 
 
 // / 疎通確認

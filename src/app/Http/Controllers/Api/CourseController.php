@@ -54,6 +54,19 @@ class CourseController extends Controller
         }
     }
 
+    // コースとイベントの表示
+    public function show(Int $id)
+    {
+        // コースとコースにひもづくイベントのデータを取得する（コースIDに応じて）
+        $courseWithEvents = Course::with('events')->find($id);
+        return response()->json($courseWithEvents, Response::HTTP_OK);
+
+        // コースとイベントのデータを別々に取得するとき
+        // $course = Course::find($id);
+        // $events = $course->events;
+        // return response()->json(['course' => $course, 'event' => $events], Response::HTTP_OK);
+    }
+
     // 一覧はindex
     public function index()
     {
