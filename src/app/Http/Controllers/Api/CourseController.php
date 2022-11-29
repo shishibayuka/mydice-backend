@@ -17,12 +17,15 @@ class CourseController extends Controller
 {
     // courseのデータの取得
     // /api/course/1の場合だとcourseのidが1のデータを取得してreturnする編集ページで使用する
+    // /api/course/1の場合だとreturnでidが1のコースのデータを返す
     public function show(Int $id)
     {
+        $course = Course::find($id);
+        return response()->json($course);
     }
 
 
-    // コースとイベントの削除
+    // コースの削除
     public function delete(Int $id)
     {
         // コースを取得する
@@ -42,9 +45,14 @@ class CourseController extends Controller
         }
     }
 
-
     // コースの編集
     public function update(Int $id, Request $request)
+    {
+    }
+
+
+    // コースとイベントの編集
+    public function updateCourseAndEvent(Int $id, Request $request)
     {
         $updateCourse = $request->course;
         $course = Course::find($id);

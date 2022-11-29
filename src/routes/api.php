@@ -51,10 +51,11 @@ Route::get('/course', [CourseController::class, 'index']);
 
 // コースの表示
 Route::get('/course/{id}', [CourseController::class, 'show']);
-// コースとイベントの削除
+// コースの削除
 Route::delete('/course/{id}', [CourseController::class, 'delete']);
-// コースとイベントの編集
+// コースの編集
 Route::patch('/course/{id}', [CourseController::class, 'update']);
+
 
 
 
