@@ -48,6 +48,18 @@ class CourseController extends Controller
     // コースの編集
     public function update(Int $id, Request $request)
     {
+        $updateCourseName = $request->name;
+        $updateCourseDescription = $request->description;
+        $updateCourseGrid = $request->grid;
+
+        $updateCourse = Course::find($id);
+
+        $updateCourse->update([
+            'name' =>  $updateCourseName,
+            'description' =>  $updateCourseDescription,
+            'grid' =>  $updateCourseGrid,
+        ]);
+        return response()->json($updateCourse);
     }
 
 
