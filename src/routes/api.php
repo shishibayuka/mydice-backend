@@ -4,10 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TestController;
-use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\API\EventController;
+use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\PlayHistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/post_courses', [CourseController::class, 'getCoursesByUserId']);
     // courseの新規登録処理
     Route::post('/course', [CourseController::class, 'store']);
+
+    // コース選択の登録
+    Route::post('/play_history', [PlayHistoryController::class, 'store']);
 });
 
 // ログイン処理
@@ -53,7 +57,7 @@ Route::get('/course', [CourseController::class, 'index']);
 Route::get('/course/{id}', [CourseController::class, 'show']);
 // コースの削除
 Route::delete('/course/{id}', [CourseController::class, 'delete']);
-// コースの編集
+// コースの更新
 Route::patch('/course/{id}', [CourseController::class, 'update']);
 
 
