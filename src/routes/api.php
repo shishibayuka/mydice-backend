@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\PlayHistoryController;
+use App\Models\PlayHistory;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +39,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // courseの新規登録処理
     Route::post('/course', [CourseController::class, 'store']);
 
+    // コース選択の表示
+    Route::get('/play_history', [PlayHistoryController::class, 'showHistory']);
+
     // コース選択の登録
     Route::post('/play_history', [PlayHistoryController::class, 'store']);
 });
+
 
 // ログイン処理
 Route::post('/authenticate', [AuthController::class, 'authenticate']);

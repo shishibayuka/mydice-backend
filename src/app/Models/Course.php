@@ -26,4 +26,11 @@ class Course extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    // 主テーブル（courses）から従テーブル（events）の情報を複数引き出す
+    // 「１対多」の「多」側→メソッド名は複数形
+    public function play_histories()
+    {
+        return $this->hasMany(PlayHistory::class);
+    }
 }
