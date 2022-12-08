@@ -23,4 +23,11 @@ class PlayHistory extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    // 主テーブルから従テーブルの情報を複数引き出す
+    // 「１対多」の「多」側→メソッド名は複数形
+    public function event_histories()
+    {
+        return $this->hasMany(EventHistory::class);
+    }
 }

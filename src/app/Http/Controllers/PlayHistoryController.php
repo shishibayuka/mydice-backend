@@ -34,7 +34,8 @@ class PlayHistoryController extends Controller
         // コース選択情報とコース情報をまとめて表示する
         // play_historiesテーブルで検索にはuser_idを使う
         // withの後はモデルに記入してあるものを使う
-        $course = PlayHistory::with('course')->where('user_id', Auth::id())->get();
+        // ->get();は配列、->first();は最初の1つだけ取得
+        $course = PlayHistory::with('course')->where('user_id', Auth::id())->first();
 
         return response()->json($course, Response::HTTP_OK);
     }

@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\TestController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\DiceController;
+use App\Http\Controllers\Api\EventHistoryController;
 use App\Http\Controllers\PlayHistoryController;
 use App\Models\PlayHistory;
 
@@ -65,8 +67,10 @@ Route::delete('/course/{id}', [CourseController::class, 'delete']);
 // コースの更新
 Route::patch('/course/{id}', [CourseController::class, 'update']);
 
+// サイコロを振るボタンを押した時の処理
+Route::post('/dice', [DiceController::class, 'play']);
 
-
+Route::get('event_history', [EventHistoryController::class, 'play']);
 
 // // eventに関する処理（練習用）
 // Route::get('/event', [EventController::class, 'index']);
